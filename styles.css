@@ -3,10 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* 
+
+html,
 body {
-  width: 1920px;
-} */
+  /* width: 1920px; */
+  font-size: 10px;
+}
 
 .container_1000 {
   /*  change name  */
@@ -35,16 +37,27 @@ body {
   border: 1px solid #dde0e5;
 }
 
-.header__menu {
+.header__menu  {
   display: flex;
-  justify-content: space-between;
+
 }
 
-.header__menu_content {
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.header__logo {
 }
 
 .header__menu_navigation {
+  width: 100%;
   align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .scroll-menu::after {
@@ -59,8 +72,9 @@ body {
 
 .navigation__menu {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   list-style: none;
+  gap: 27px;
 }
 
 .navigation__link {
@@ -72,7 +86,32 @@ body {
 .navigation__link_header {
   font: 400 15px/22px Montserrat, sans-serif;
   color: #000000;
-  padding-right: 27px;
+}
+
+.service-menu  {
+  justify-self: flex-end;
+  /* margin-left: auto; */
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  list-style: none;
+  flex-wrap: nowrap;
+}
+
+.shopping-cart-item  {
+  background: url("/images/header-icons/shopping-cart.svg");
+  display: inline-block;
+  width: 20px;
+  height: 17px;
+  cursor: pointer;
+}
+
+.search-item  {
+  background: url("/images/header-icons/search.svg");
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }
 
 .banner-top {
@@ -92,7 +131,7 @@ body {
 }
 
 .banner-top__info-pretitle {
-  font: 500 22px/22px Montserrat, sans-serif;
+  font: 500 2.2rem/1 Montserrat, sans-serif;
   color: #ffffff;
   display: block;
 }
@@ -158,14 +197,14 @@ body {
 
 .banner-top__pics_chart {
   position: absolute;
-  top: 282px;
-  right: 371.63px;
+  top: 280px;
+  right: 469px;
 }
 
 .banner-top__pics_handshake {
   position: absolute;
-  top: 102px;
-  right: 98px;
+  top: 10px;
+  right: 68px;
 }
 
 .h2-title_dark {
@@ -189,6 +228,7 @@ body {
 }
 
 .join-team {
+  gap: calc(10rem);
   margin-top: 155px;
   display: flex;
   flex-wrap: wrap;
@@ -217,6 +257,15 @@ body {
   margin-top: 21px;
   display: block;
   max-width: 381px;
+}
+
+.join-team__info-icon-container  {
+  margin-top: 50px;
+  max-width: 422px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 27px 38px;
+  opacity: 0.5;
 }
 
 .join-team__cards {
@@ -357,6 +406,39 @@ body {
 .growth-business__step {
   display: flex;
   flex-direction: row;
+}
+
+.growth-business__step-number  {
+  position: relative;
+}
+
+.growth-business__step-number::before  {
+  text-align: center;
+  line-height: 5px;
+  position: absolute;
+  top: 120px;
+  right: -43px;
+  content: '....';
+  font-size: 50px;
+  letter-spacing: 15px;
+  color: #3D50F9;
+  transform: rotate(90deg);
+}
+
+.growth-business__step-number-span  {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font: 500 2.2rem/1.18 "Euclid Circular B", sans-serif;
+  color: #FFFFFF;
+}
+
+.growth-business__step:last-child .growth-business__step-number::before  {
+  content: "";
+}
+
+.growth-business__step:first-child .growth-business__step-number .growth-business__step-number-span {
+  color: #2C3442;
 }
 
 .growth-business__step:not(:first-child) {
@@ -539,6 +621,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 145px;
 }
 
 .banner-question__info {
@@ -698,7 +781,7 @@ span.slider__dots {
 
 .become-a-partner  {
   margin-top: 150px;
-  width: 100%;
+  width: 100vw;
   background-color: #2C3442;
 }
 
@@ -743,11 +826,11 @@ span.slider__dots {
   font: 700 22px/26px Montserrat, sans-serif;
   color: #151824;
   align-self: center;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
 .form__input  {
-  margin-bottom: 14px;
+  margin-top: 14px;
   max-width: 427px;
   max-height: 44px;
   border: 1px solid #ABB0BA;
@@ -757,8 +840,23 @@ span.slider__dots {
   padding: 10px 0 10px 18px;
 }
 
+.errorBorder  {
+  border: 1px solid #FF7449;
+}
+
+.form__input:focus  {
+  outline: none;
+  border: 1px solid #3D50F9;
+  box-shadow: 0 0 4px rgba(41, 160, 228, 0.7);
+}
+
+.form__input-error {
+  font: 400 14px/24px Montserrat, sans-serif;
+  color: #FF7449;
+}
+
 .form__textarea  {
-  margin-bottom: 34px;
+  margin-top: 14px;
   max-width: 427px;
   border: 1px solid #ABB0BA;
   border-radius: 4px;
@@ -770,13 +868,20 @@ span.slider__dots {
   align-self: stretch;
 }
 
+.form__textarea:focus {
+  outline: none;
+  border: 1px solid #3D50F9;
+  box-shadow: 0 0 4px rgba(41, 160, 228, 0.7);
+}
+
 .form__terms  {
   font: 400 16px/24px Montserrat, sans-serif;
   color: #3D3E47;
-  margin-bottom: 20px;
+  margin-top: 34px;
 }
 
 .form__button  {
+  margin-top: 20px;
   cursor: pointer;
   padding: 18px 0;
   border-radius: 10px;
@@ -792,3 +897,88 @@ span.slider__dots {
   transform: scale(1.05);
 }
 
+.footer  {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer__container  {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10%;
+  padding-bottom: 85px;
+}
+
+.footer__info  {
+  display: flex;
+  flex-direction: column;
+  max-width: 375px;
+}
+
+.footer__logo  {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footer__info-description  {
+  margin-top: 4%;
+  font: 400 1.4rem/1.8 Montserrat, sans-serif;
+  color: #3D3E47;
+}
+
+.footer__subscribe  {
+  max-width: 465px;
+}
+
+.subscribe__title  {
+  font: 600 1.7rem/1.8 Montserrat, sans-serif;
+  color: #3D3E47;
+}
+
+.subscribe__description  {
+  margin-top: 1.72%;
+  font: 400 1.4rem/1.8 Montserrat, sans-serif;
+  color: #3D3E47;
+}
+
+.subscribe__form  {
+  margin-top: 3.55%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.subscribe__form-input  {
+  flex-grow: 2;
+  border: 1px solid #C3C4CA;
+  border-radius: 3px;
+  font: 400 1.4rem/1.8 Montserrat, sans-serif;
+  color: #8C929B;
+  padding-left: 12px;
+}
+
+.subscribe__form-input:focus  {
+  outline: none;
+  border: 1px solid #3D50F9;
+  box-shadow: 0 0 4px rgba(41, 160, 228, 0.7);
+}
+
+.subscribe__form-submit  {
+  flex-grow: 1;
+  font: 500 1.4rem/1.8 Montserrat, sans-serif;
+  color: #FFFFFF;
+  padding: 5.5px 36px 6.5px 37px;
+  background-color: #3D50F9;
+  border-radius: 3px;
+  margin: 0 9px;
+  border: none;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.subscribe__form-submit:hover  {
+  background-color: #0518c9;
+  transform: scale(1.05);
+}
