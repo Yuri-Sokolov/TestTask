@@ -81,13 +81,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let emailValidate = false;
 
   const submitForm = document.getElementById("submitForm");
-  // submitForm.setAttribute("disabled", true);
+  submitForm.setAttribute("disabled", true);
+
   let partnerData = {
     email: "",
     companyName: "",
     phone: "",
     companyDescription: "",
   };
+
+  function checkSubmitButtonStatus() {
+    if (companyNameValidate && phoneValidate && emailValidate) {
+      submitForm.removeAttribute("disabled")
+    } else {
+      submitForm.setAttribute("disabled", true);
+    }
+  }
+
   submitForm.addEventListener("mouseenter", () =>
     console.log(
       partnerData,
@@ -131,21 +141,24 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     if (companyNameValidate) {
       partnerData.companyName = e.currentTarget.value;
-    }
+    };
+    checkSubmitButtonStatus();
   });
 
   phone.addEventListener("input", (e) => {
     phoneValidate = checkValue(e, phoneRegExp, phoneError, phoneErrorText);
     if (phoneValidate) {
       partnerData.phone = e.target.value;
-    }
+    };
+    checkSubmitButtonStatus();
   });
 
   email.addEventListener("input", (e) => {
     emailValidate = checkValue(e, emailRegExp, emailError, emailErrorText);
     if (emailValidate) {
       partnerData.email = e.target.value;
-    }
+    };
+    checkSubmitButtonStatus();
   });
 
   function checkValue(e, regExp, error, errorText) {
@@ -172,25 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // async function partnerJSON(data) {
-  //   try {
-  //     const response = await fetch("./api/partner.php", {
-  //       method: 'POST',
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-  //     if (!response.ok) {
-  //       const result = await response.text();
-  //       throw new Error(result);
-  //     }
-  //     return response.json();
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // }
-
   async function partnerJSON(data) {
     await fetch("/api/partner.php", {
       method: "POST",
@@ -199,19 +193,65 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
+      .then(async (response) => {
         if (!response.ok) {
-          return response.text().then((text) => {
-            throw new Error(text || "Ошибка!!!");
-          });
-        } 
+          const text = await response.text();
+          throw new Error(text || "Ошибка!!!");
+        }
         return response.json();
       })
-      .then(data => {
-        alert('Данные:', data);
+      .then((data) => {
+        form.reset();
+        alert(data.message);
       })
       .catch((error) => {
         alert(error.message);
       });
   }
+
+  // scroll-menu
+  const scrollMenuList = Array.from(document.querySelectorAll(".scroll-menu"));
+
+  const scrollMenuItem = document.getElementsByClassName('navigation__item');
+  for(var i=0; i<scrollMenuItem.length; i++) {
+    scrollMenuItem[i].addEventListener("mouseenter", showSub, false);
+    scrollMenuItem[i].addEventListener("mouseleave", hideSub, false);
+ } 
+
+  // scrollMenuList.forEach(scrollMenu => {
+  //   const subMenu = scrollMenu.nextElementSibling;
+  //   scrollMenu.addEventListener("mouseenter", showSub, false);
+
+  //   scrollMenu.addEventListener("mouseleave", hideSub, false);
+  // })
+
+  // scrollMenuList.forEach(scrollMenu => {
+  //   const subMenu = scrollMenu.nextElementSibling;
+  //   scrollMenu.addEventListener("mouseenter", () => {
+  //     subMenu.classList.remove('hidden');
+  //   });
+
+  //   scrollMenu.addEventListener("mouseleave", () => {
+  //     subMenu.classList.add('hidden');
+  //   });
+  // })
+
+  function showSub(e) {
+    if(this.children.length>1) {
+       this.children[1].style.height = "auto";
+       this.children[1].style.overflow = "visible";
+       this.children[1].style.opacity = "1";
+    } else {
+       return false;
+    }
+ }
+ function hideSub(e) {
+     if(this.children.length>1) {
+       this.children[1].style.height = "0px";
+        this.children[1].style.overflow = "hidden";
+        this.children[1].style.opacity = "0";
+     } else {
+        return false;
+     }
+ }
 });

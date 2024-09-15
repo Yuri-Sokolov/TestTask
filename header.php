@@ -2,7 +2,11 @@
 $header = [
     'logo-link' => 'index.php',
     'navigation' => [
-        'products',
+        'products' => [
+            'product1',
+            'product2',
+            'product3'
+        ],
         'pricing',
         'support',
         'customers',
@@ -29,9 +33,21 @@ $header = [
         </div>
         <nav class="header__menu_navigation navigation">
             <ul class="navigation__menu">
-                <?php foreach ($header['navigation'] as $nav) : ?>
-                    <li class="navigation__item"><a class="navigation__link navigation__link_header" href="<?= $nav ?>.php"><?= $nav ?></a>
-                    </li>
+                <?php foreach ($header['navigation'] as $key => $nav) : ?>
+                    <?php if (is_array($nav)): ?>
+                        <li class="navigation__item">
+                            <a class=" navigation__link navigation__link_header scroll-menu" href="/"><?= $key ?></a>
+                            <div class="scroll-menu__list">
+                                <?php foreach ($nav as $subNav) : ?>
+                                    <a class="scroll-menu__item navigation__link navigation__link_header" href="<?= $subNav ?>.php"><?= $subNav ?></a>
+                                <?php endforeach; ?>
+                            </div>
+                        </li>
+                    <?php else: ?>
+                        <li class="navigation__item">
+                            <a class="navigation__link navigation__link_header" href="<?= $nav ?>.php"><?= $nav ?></a>
+                        </li>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
             <ul class="navigation__service-menu service-menu">

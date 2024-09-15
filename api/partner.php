@@ -55,9 +55,8 @@ try {
 
         $sql = "INSERT INTO partners (email, phone, company_name, description) 
         VALUES ('$email', '$phone', '$companyName', '$description')";
-        echo $sql;
         if ($conn->query($sql)) {
-            echo "Данные успешно добавлены";
+            echo json_encode(["message" => "Данные успешно добавлены"]);
             // header('Location: ../index.php');
         } else {
             throw new Error($conn->error);
@@ -66,6 +65,6 @@ try {
         throw new Error('проблемы с датой!');
     }
 } catch (\Throwable $th) {
-    header('HTTP/1.1 401 Unauthorized');
+    header('HTTP/1.1 601');
     die($th->getMessage());
 };
