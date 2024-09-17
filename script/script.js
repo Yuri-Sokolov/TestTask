@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function checkSubmitButtonStatus() {
     if (companyNameValidate && phoneValidate && emailValidate) {
-      submitForm.removeAttribute("disabled")
+      submitForm.removeAttribute("disabled");
     } else {
       submitForm.setAttribute("disabled", true);
     }
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     if (companyNameValidate) {
       partnerData.companyName = e.currentTarget.value;
-    };
+    }
     checkSubmitButtonStatus();
   });
 
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     phoneValidate = checkValue(e, phoneRegExp, phoneError, phoneErrorText);
     if (phoneValidate) {
       partnerData.phone = e.target.value;
-    };
+    }
     checkSubmitButtonStatus();
   });
 
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     emailValidate = checkValue(e, emailRegExp, emailError, emailErrorText);
     if (emailValidate) {
       partnerData.email = e.target.value;
-    };
+    }
     checkSubmitButtonStatus();
   });
 
@@ -212,46 +212,93 @@ document.addEventListener("DOMContentLoaded", () => {
   // scroll-menu
   const scrollMenuList = Array.from(document.querySelectorAll(".scroll-menu"));
 
-  const scrollMenuItem = document.getElementsByClassName('navigation__item');
-  for(var i=0; i<scrollMenuItem.length; i++) {
+  const scrollMenuItem = document.getElementsByClassName("navigation__item");
+  for (var i = 0; i < scrollMenuItem.length; i++) {
     scrollMenuItem[i].addEventListener("mouseenter", showSub, false);
     scrollMenuItem[i].addEventListener("mouseleave", hideSub, false);
- } 
-
-  // scrollMenuList.forEach(scrollMenu => {
-  //   const subMenu = scrollMenu.nextElementSibling;
-  //   scrollMenu.addEventListener("mouseenter", showSub, false);
-
-  //   scrollMenu.addEventListener("mouseleave", hideSub, false);
-  // })
-
-  // scrollMenuList.forEach(scrollMenu => {
-  //   const subMenu = scrollMenu.nextElementSibling;
-  //   scrollMenu.addEventListener("mouseenter", () => {
-  //     subMenu.classList.remove('hidden');
-  //   });
-
-  //   scrollMenu.addEventListener("mouseleave", () => {
-  //     subMenu.classList.add('hidden');
-  //   });
-  // })
+  }
 
   function showSub(e) {
-    if(this.children.length>1) {
-       this.children[1].style.height = "auto";
-       this.children[1].style.overflow = "visible";
-       this.children[1].style.opacity = "1";
+    if (this.children.length > 1) {
+      this.children[1].style.height = "auto";
+      this.children[1].style.overflow = "visible";
+      this.children[1].style.opacity = "1";
     } else {
-       return false;
+      return false;
     }
- }
- function hideSub(e) {
-     if(this.children.length>1) {
-       this.children[1].style.height = "0px";
-        this.children[1].style.overflow = "hidden";
-        this.children[1].style.opacity = "0";
-     } else {
-        return false;
-     }
- }
+  }
+  function hideSub(e) {
+    if (this.children.length > 1) {
+      this.children[1].style.height = "0px";
+      this.children[1].style.overflow = "hidden";
+      this.children[1].style.opacity = "0";
+    } else {
+      return false;
+    }
+  }
+
+  // subscribe form
+
+  const subscribeForm = document.getElementById("subscribeForm");
+  const subscribeEmail = document.getElementById("subscribeEmail");
+  const submitSubscribe = document.getElementById("submitSubscribe");
+  const subscribeEmailError = document.getElementById("subscribeEmailError");
+
+  submitSubscribe.setAttribute("disabled", true);
+  let subscribeEmailValidate = false;
+  let subscribeData = { email: "" };
+
+  subscribeEmail.addEventListener("input", (e) => {
+    subscribeEmailValidate = checkValue(
+      e,
+      emailRegExp,
+      subscribeEmailError,
+      emailErrorText
+    );
+    if (subscribeEmailValidate) {
+      subscribeData.email = e.target.value;
+    }
+    checkSubmitSubscribeButtonStatus();
+  });
+
+  function checkSubmitSubscribeButtonStatus() {
+    if (subscribeEmailValidate) {
+      submitSubscribe.removeAttribute("disabled");
+    } else {
+      submitSubscribe.setAttribute("disabled", true);
+    }
+  }
+
+  subscribeForm.addEventListener("submit", checkSubscribeForm)
+
+  function checkSubscribeForm(e) {
+    e.preventDefault();
+    if (subscribeEmailValidate) {
+      subscribeJSON(subscribeData);
+    }
+  }
+
+  async function subscribeJSON(data) {
+    await fetch("/api/subscribe.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          const text = await response.text();
+          throw new Error(text || "Ошибка!!!");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        subscribeForm.reset();
+        alert(data.message);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
 });

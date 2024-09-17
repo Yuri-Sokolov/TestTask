@@ -4,9 +4,9 @@ include "dbconnect.php";
 $data = getJsonData();
 $method = $_SERVER['REQUEST_METHOD'];
 
-function existsEmailFromPartners(mysqli $conn, $email): bool
+function existsEmailFromSubscribe(mysqli $conn, $email): bool
 {
-    $sql = "SELECT * FROM partners WHERE email = '$email'";
+    $sql = "SELECT * FROM subscribe WHERE email = '$email'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         return true;
@@ -26,17 +26,12 @@ try {
     $conn = createDBConnection();
     if ($method === 'POST' && $data) {
         $email = $data["email"];
-        $phone = $data["phone"];
-        $companyName = $data["companyName"];
-        $description = $data["companyDescription"] ?? null;
 
-
-        if (existsEmailFromPartners($conn, $email)) {
+        if (existsEmailFromSubscribe($conn, $email)) {
             throw new Error('Такой email уже существует');
         }
 
-        $sql = "INSERT INTO partners (email, phone, company_name, description) 
-        VALUES ('$email', '$phone', '$companyName', '$description')";
+        $sql = "INSERT INTO subscribe (email) VALUES ('$email')";
         if ($conn->query($sql)) {
             echo json_encode(["message" => "Данные успешно добавлены"]);
             // header('Location: ../index.php');
