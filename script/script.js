@@ -98,16 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  submitForm.addEventListener("mouseenter", () =>
-    console.log(
-      partnerData,
-      companyNameValidate,
-      emailValidate,
-      phoneValidate,
-      " ",
-      JSON.stringify(partnerData)
-    )
-  );
+  // submitForm.addEventListener("mouseenter", () =>
+  //   console.log(
+  //     partnerData,
+  //     companyNameValidate,
+  //     emailValidate,
+  //     phoneValidate,
+  //     " ",
+  //     JSON.stringify(partnerData)
+  //   )
+  // );
   form.addEventListener("submit", checkForm);
 
   const buttonsBecomeAPartner = Array.from(
