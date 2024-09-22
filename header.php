@@ -25,14 +25,19 @@ $header = [
 
 <div class="header__container container_1000">
     <a class="header__logo" href="./index.php">
-        <img class="header__logo-icon" src="/images/iSpringLogo.svg" alt="" />
+        <img class="header__logo-icon" src="/images/iSpringLogo.svg" alt="iSpring logo">
     </a>
     <div class="header__menu">
-        <div class="header__hamb-button">
-            <span class="header__hamb-button-span"></span>
+        <div class="navigation__menu-hamb hamb">
+            <div class="header__hamb-button" id="hamb">
+                <span class="header__hamb-button-span"></span>
+                <span class="header__hamb-button-span"></span>
+                <span class="header__hamb-button-span"></span>
+            </div>
         </div>
+        <div class="header__popup" id="popup"></div>
         <nav class="header__menu_navigation navigation">
-            <ul class="navigation__menu">
+            <ul class="navigation__menu" id="menu">
                 <?php foreach ($header['navigation'] as $key => $nav) : ?>
                     <?php if (is_array($nav)): ?>
                         <li class="navigation__item">
@@ -50,7 +55,7 @@ $header = [
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
-            <ul class="navigation__service-menu service-menu">
+            <ul class="navigation__service-menu service-menu" id="serviceMenu">
                 <li class="service-menu__item language-item navigation__link_header">EN</li>
                 <li class="service-menu__item shopping-cart-item"></li>
                 <li class="service-menu__item search-item"></li>

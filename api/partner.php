@@ -39,7 +39,6 @@ try {
         VALUES ('$email', '$phone', '$companyName', '$description')";
         if ($conn->query($sql)) {
             echo json_encode(["message" => "Данные успешно добавлены"]);
-            // header('Location: ../index.php');
         } else {
             throw new Error($conn->error);
         }

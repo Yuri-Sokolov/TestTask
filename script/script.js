@@ -98,16 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // submitForm.addEventListener("mouseenter", () =>
-  //   console.log(
-  //     partnerData,
-  //     companyNameValidate,
-  //     emailValidate,
-  //     phoneValidate,
-  //     " ",
-  //     JSON.stringify(partnerData)
-  //   )
-  // );
   form.addEventListener("submit", checkForm);
 
   const buttonsBecomeAPartner = Array.from(
@@ -301,4 +291,48 @@ document.addEventListener("DOMContentLoaded", () => {
         alert(error.message);
       });
   }
+
+  // burger-menu
+  const hamb = document.querySelector("#hamb");
+  const popup = document.querySelector("#popup");
+  const body = document.body;
+
+  const menu = document.querySelector("#menu").cloneNode(1);
+  const serviceMenu = document.querySelector("#serviceMenu").cloneNode(1);
+
+  hamb.addEventListener("click", hambHandler);
+
+  function hambHandler(e) {
+      e.preventDefault();
+      popup.classList.toggle("open");
+      hamb.classList.toggle("active-menu");
+      body.classList.toggle("noscroll");
+      renderPopup();
+  }
+
+  function renderPopup() {
+      popup.appendChild(menu);
+      popup.appendChild(serviceMenu);
+  }
+
+  function unmountPopup() {
+      popup.removeChild(menu);
+      popup.removeChild(serviceMenu);
+  }
+
+  const links = Array.from(menu.children);
+  const anotherLinks = Array.from(serviceMenu.children);
+  links.push(...anotherLinks);
+  
+  links.forEach((link) => {
+      link.addEventListener("click", closeOnClick);
+  });
+
+  function closeOnClick() {
+      unmountPopup()
+      popup.classList.remove("open");
+      hamb.classList.remove("active-menu");
+      body.classList.remove("noscroll");
+  }
+  window.addEventListener('resize', closeOnClick)
 });

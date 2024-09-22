@@ -6,7 +6,6 @@
 
 html,
 body {
-  /* width: 1920px; */
   font-size: 10px;
 }
 
@@ -99,24 +98,14 @@ body {
   transform: scale(1.1);
 }
 
+.requestForm__input-error  {
+  font: 400 1.4rem/1.6 Montserrat, sans-serif;
+  color: #FF7449;
+}
+
 .response {
   margin-top: 2rem;
 }
-
-/* .response__ok {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 1fr 1fr 2fr;
-  grid-template-areas: 
-    "companyName companyNameValue"
-    "email emailValue"
-    "phone phoneValue"
-    "description descriptionValue" ;
-  justify-items: start;
-  gap: 1rem;
-  border: 1px solid #000000;
-  width: 100%;
-} */
 
 .response__ok {
   display: flex;

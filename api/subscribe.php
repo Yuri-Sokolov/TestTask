@@ -34,7 +34,6 @@ try {
         $sql = "INSERT INTO subscribe (email) VALUES ('$email')";
         if ($conn->query($sql)) {
             echo json_encode(["message" => "Данные успешно добавлены"]);
-            // header('Location: ../index.php');
         } else {
             throw new Error($conn->error);
         }

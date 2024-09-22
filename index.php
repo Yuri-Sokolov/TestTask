@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iSpring test task</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>iSpring test task</title>
 </head>
 
 <body>
@@ -35,16 +38,15 @@
                 <h2 class="join-team__info-title h2-title_dark">Join the team of eLearning enthusiasts</h2>
                 <p class="join-team__info-description description_dark">Tap into the rapidly growing eLearning market with the industry leader in course authoring and learning management — iSpring.</p>
                 <div class="join-team__info-icon-container">
-                    <img class="join-team__info-icon" src="/images/join-icons/amazon.svg" alt="amazon logo"/>
-                    <img class="join-team__info-icon" src="/images/join-icons/visa.svg" alt="visa logo"/>
-                    <img class="join-team__info-icon" src="/images/join-icons/dell.svg" alt="dell logo"/>
-                    <img class="join-team__info-icon" src="/images/join-icons/google.svg" alt="google logo"/>
-                    <img class="join-team__info-icon" src="/images/join-icons/microsoft.svg" alt="microsoft logo"/>
-                    <img class="join-team__info-icon" src="/images/join-icons/nike.svg" alt="nike logo"/>
-                    <img class="join-team__info-icon" src="/images/join-icons/starbucks.svg" alt="starbucks logo"/>
-                    <img class="join-team__info-icon" src="/images/join-icons/booking.svg" alt="booking logo"/>
+                    <img class="join-team__info-icon" src="/images/join-icons/amazon.svg" alt="amazon logo">
+                    <img class="join-team__info-icon" src="/images/join-icons/visa.svg" alt="visa logo">
+                    <img class="join-team__info-icon" src="/images/join-icons/dell.svg" alt="dell logo">
+                    <img class="join-team__info-icon" src="/images/join-icons/google.svg" alt="google logo">
+                    <img class="join-team__info-icon" src="/images/join-icons/microsoft.svg" alt="microsoft logo">
+                    <img class="join-team__info-icon" src="/images/join-icons/nike.svg" alt="nike logo">
+                    <img class="join-team__info-icon" src="/images/join-icons/starbucks.svg" alt="starbucks logo">
+                    <img class="join-team__info-icon" src="/images/join-icons/booking.svg" alt="booking logo">
                 </div>
-                <!-- <img src="/images/nike.svg" alt="logos"> -->
             </div>
             <div class="join-team__cards">
                 <div class="join-team__cards_dark-blue join-team-card">
@@ -116,18 +118,18 @@
                 <h2 class="banner-question__info-title h2-title_light">Have questions?
                     Reach out!</h2>
             </div>
-            <span class="banner-question__description">We provide our partners with fast tech and sales assistance, including pre-sales and sales support.<br /><br />Contact us any time at partner@ispring.com.</span>
+            <span class="banner-question__description">We provide our partners with fast tech and sales assistance, including pre-sales and sales support.<br><br>Contact us any time at partner@ispring.com.</span>
         </div>
         <div class="page-content__slider slider" id="slider">
             <h2 class="slider__title h2-title_dark">See how companies benefit from partnering with iSpring</h2>
             <div class="slider__slides-list" id="sliderList">
                 <div class="slider__slide-item">
-                    <img class="slider__slide-icon" src="/images/slides/slide.svg" alt="" />
+                    <img class="slider__slide-icon" src="/images/slides/slide.svg" alt="">
                     <h3 class="slider__slide-title">Our income from partnering with iSpring has been increasing every year! Slide1</h3>
                     <div class="slider__slide-info">
                         <p class="slider__slide-description">Besides iSpring’s transparent discount system for partners, the software often becomes a door opener to selling learning management systems, which brings lern.link new business opportunities.</p>
                         <div class="slider__slide-avatar avatar">
-                            <img class="avatar__photo" src="/images/slides/avatar-photo.png" alt="" />
+                            <img class="avatar__photo" src="/images/slides/avatar-photo.png" alt="">
                             <div class="avatar__description">
                                 <span class="avatar__name">Guido Hornig</span>
                                 <span class="avatar__role">Founder and director of lern.link</span>
@@ -136,12 +138,12 @@
                     </div>
                 </div>
                 <div class="slider__slide-item">
-                    <img class="slider__slide-icon" src="/images/slides/slide.svg" alt="" />
+                    <img class="slider__slide-icon" src="/images/slides/slide.svg" alt="">
                     <h3 class="slider__slide-title">Our income from partnering with iSpring has been increasing every year! Slide2</h3>
                     <div class="slider__slide-info">
                         <p class="slider__slide-description">Besides iSpring’s transparent discount system for partners, the software often becomes a door opener to selling learning management systems, which brings lern.link new business opportunities.</p>
                         <div class="slider__slide-avatar avatar">
-                            <img class="avatar__photo" src="/images/slides/avatar-photo.png" alt="" />
+                            <img class="avatar__photo" src="/images/slides/avatar-photo.png" alt="">
                             <div class="avatar__description">
                                 <span class="avatar__name">Guido Hornig</span>
                                 <span class="avatar__role">Founder and director of lern.link</span>
@@ -150,12 +152,12 @@
                     </div>
                 </div>
                 <div class="slider__slide-item">
-                    <img class="slider__slide-icon" src="/images/slides/slide.svg" alt="" />
+                    <img class="slider__slide-icon" src="/images/slides/slide.svg" alt="">
                     <h3 class="slider__slide-title">Our income from partnering with iSpring has been increasing every year! Slide3</h3>
                     <div class="slider__slide-info">
                         <p class="slider__slide-description">Besides iSpring’s transparent discount system for partners, the software often becomes a door opener to selling learning management systems, which brings lern.link new business opportunities.</p>
                         <div class="slider__slide-avatar avatar">
-                            <img class="avatar__photo" src="/images/slides/avatar-photo.png" alt="" />
+                            <img class="avatar__photo" src="/images/slides/avatar-photo.png" alt="">
                             <div class="avatar__description">
                                 <span class="avatar__name">Guido Hornig</span>
                                 <span class="avatar__role">Founder and director of lern.link</span>
@@ -182,7 +184,7 @@
                     <label for="phone" class="form__input-error" id="phoneError"></label>
                     <input name="email" id="email" class="form__input" type="email" required placeholder="Email">
                     <label for="email" class="form__input-error" id="emailError"></label>
-                    <textarea id="companyDescription" class="form__textarea" type="text" placeholder="Brief company description (years in business, eLearning experience, and why you want to be an iSpring partner)"></textarea>
+                    <textarea id="companyDescription" class="form__textarea" placeholder="Brief company description (years in business, eLearning experience, and why you want to be an iSpring partner)"></textarea>
                     <span class="form__terms">By clicking "Become a Partner," you confirm that you're agreeing to our Terms and Privacy Policy.</span>
                     <button class="form__button" type="submit" id="submitForm">Become a Partner</button>
                 </form>
@@ -190,7 +192,7 @@
         </div>
     </main>
     <footer class="footer">
-        <?php include "footer.php"?>
+        <?php include "footer.php" ?>
     </footer>
     <script src="./script/script.js"></script>
 </body>
